@@ -1,0 +1,4 @@
+USE dbLogTest
+
+
+DBCC SQLPERF(LOGSPACE)

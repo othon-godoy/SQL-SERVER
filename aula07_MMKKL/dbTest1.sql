@@ -1,0 +1,5 @@
+CREATE DATABASE dbTest1
+
+DROP DATABASE dbTest1
+
+USE dbTest3

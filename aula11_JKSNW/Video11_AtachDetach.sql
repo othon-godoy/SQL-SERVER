@@ -1,0 +1,27 @@
+-- CREATE
+CREATE DATABASE DB_ATACH
+ON
+(	NAME = 'Data' , FILENAME ='C:\SQL2014Impl\Video11\Data.mdf' )
+LOG ON 
+(	NAME = 'Log' , FILENAME ='C:\SQL2014Impl\Video11\Log.Ldf' )
+GO
+
+USE DB_ATACH
+GO
+USE MASTER
+GO
+
+-- DETACH
+USE [master]
+GO
+EXEC master.dbo.sp_detach_db @dbname = N'DB_ATACH'
+GO
+
+-- ATACH
+USE [master]
+GO
+CREATE DATABASE [DB_ATACH_OTHER] ON 
+( FILENAME = N'C:\SQL2014Impl\Video11\OTHER\Data.mdf' ),
+( FILENAME = N'C:\SQL2014Impl\Video11\OTHER\Log.mdf' )
+ FOR ATTACH
+GO
