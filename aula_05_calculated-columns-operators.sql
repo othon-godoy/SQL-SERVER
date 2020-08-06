@@ -1,0 +1,36 @@
+-- CRIANDO COLUNAS CALCULADAS
+SELECT 1 + 1 AS SUM
+GO
+
+-- SETANDO BANCO DE DADOS
+USE dbModelDatabase
+GO
+
+-- CRIANDO COLUNAS CALCULADAS SOMANDO 10 AO VALOR DO PRODUTO E COM UM ACRÉSCIMO DE 10%
+SELECT NomeProduto
+      ,PrcProduto as Original
+	  ,PrcProduto + 10 as PlusTen
+	  ,PrcProduto + (PrcProduto * 0.1) as TenPercentIncrease
+FROM PRODUTOS
+GO
+
+-- PRINCIPAIS OPERADORES
+-- =
+-- < 
+-- > 
+-- <= 
+-- >=
+-- <> OR != OR ^=
+-- AND: TODAS AS CONDIÇÕES DEVEM SER VERDADEIRAS
+-- OR: APENAS UMA CONDIÇÃO PRECISA SER VERDADEIRA
+-- NOT: NEGAÇÃO
+
+SELECT *
+FROM PRODUTOS
+WHERE PrcProduto >= 10.0
+GO
+
+-- CONCATENAÇÃO DE STRINGS
+SELECT NomeTransportadora + ' - '  + MeioTransporte AS Info
+FROM TRANSPORTADORAS
+GO

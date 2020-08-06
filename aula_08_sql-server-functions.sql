@@ -1,0 +1,88 @@
+-- SETANDO BANCO DE DADOS
+USE dbModelDatabase
+GO
+
+-- UPPER()
+SELECT idProduto
+      ,NomeProduto
+	  ,UPPER(NomeProduto) as 'BIG' 
+FROM PRODUTOS
+WHERE UPPER(NomeProduto) LIKE 'CAIXA%'
+GO
+
+-- SUBSTRING()
+SELECT ENDCLIENTE,
+	   SUBSTRING(ENDCLIENTE,1,15) AS ENDERECO
+FROM CLIENTES
+GO
+
+-- LEN()
+SELECT NomeCliente
+      ,len(NomeCliente) as 'SIZE' 
+FROM CLIENTES
+GO
+
+-- ROUND()
+SELECT IDPRODUTO	'Produto'
+      ,PrcProduto 'Preco' 
+	  ,PrcProduto/2 as 'No round' 
+	  ,round(PrcProduto/2,1) as 'Dec. Round' 
+FROM PRODUTOS
+GO
+
+-- RAND()
+SELECT RAND()
+GO
+
+-- CONVERSÕES
+SELECT CONVERT(INT,'10')
+GO
+
+SELECT CONVERT(INT,'10.9')
+GO
+
+SELECT CONVERT(float,'10.9')
+GO
+
+SELECT CONVERT(VARCHAR(4),'10.123')
+GO
+
+SELECT GETDATE() AS 'DATE' 
+      ,CONVERT(VARCHAR,GETDATE()) 'CONVERTED DATE' 
+GO
+
+-- ESPECIFICANDO O FORMATO DE DATA NA CONVERSÃO
+SELECT IdPedido
+      ,DataPedido 
+	  ,CONVERT(char(10),DataPedido, 103)  as 'Date' 
+FROM PEDIDOS
+GO
+
+-- PEGANDO APENAS A HORA
+SELECT IdPedido
+      ,DataPedido 
+	  ,convert(char(5),DataPedido, 108)  as 'Time' 
+FROM PEDIDOS
+GO
+
+-- ADICIONANDO OU SUBTRAINDO VALORES DAS DATAS
+SELECT GETDATE()      AS 'DATE' 
+      ,GETDATE() + 1  AS 'DATE+1' 
+	  ,GETDATE() - 1  AS 'DATE-1' 
+GO
+
+-- TAMBÉM É POSSÍVEL USAR A FUNÇÃO DATEADD
+SELECT IDPEDIDO
+      ,DATAPEDIDO
+	  ,DATEADD(month,1,DataPedido) as 'NextMonth' 
+	  ,DATEADD(hour,-1,DataPedido) as 'PreviousHour' 
+FROM PEDIDOS
+GO
+
+-- OBTENDO INTERVALOS
+SELECT GETDATE()      AS 'NOW'
+      ,GETDATE() + 1  AS 'NEXT DAY' 
+	  ,DATEDIFF(DAY,GETDATE(), GETDATE() + 1) AS 'DIFF_IN_DAYS' 
+	  ,DATEDIFF(HOUR,GETDATE(), GETDATE() + 1) AS 'DIFF_IN_HOURS' 
+	  ,DATEDIFF(SECOND,GETDATE(), GETDATE() + 1) AS 'DIFF_IN_SECONDS'
+GO
